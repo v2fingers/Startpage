@@ -1,0 +1,87 @@
+<html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Newtab</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <header>
+      <time id="clock" aria-label="current time">00:00</time>
+    </header>
+
+    <form id="search" autocomplete="off">
+      <span>search</span>
+      <input
+        id="query"
+        name="q"
+        type="Search"
+        placeholder="Duckduckgo"
+        spellcheck="false"
+        autofocus
+      >
+    </form>
+
+    <nav aria-label="quick links">
+      <a href="https://youtube.com">Youtube<kbd>y</kbd></a>
+      <a href="https://github.com">Github<kbd>g</kbd></a>
+      <a href="https://account.proton.me/apps">Proton<kbd>p</kbd></a>
+    </nav>
+
+    <footer>
+      An idiot admires complexity, a genius admires simplicity.
+    </footer>
+  </main>
+
+  <script>
+    const clock = document.getElementById("clock");
+    const input = document.getElementById("query");
+    const form = document.getElementById("search");
+
+    const links = {
+      y: "https://youtube.com",
+      g: "https://github.com",
+      c: "https://github.com/v2fingers"
+    };
+
+    function tick() {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      });
+    }
+
+    tick();
+    setInterval(tick, 1000);
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const q = input.value.trim();
+      if (!q) return;
+
+      location.href = "https://duckduckgo.com/?q=" + encodeURIComponent(q);
+    });
+
+    window.addEventListener("keydown", event => {
+      const typing = document.activeElement === input;
+
+      if (event.key === "/" && !typing) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+
+      if (!typing && links[event.key]) {
+        location.href = links[event.key];
+      }
+    });
+  </script>
+</body>
+</html>

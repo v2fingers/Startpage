@@ -1,0 +1,129 @@
+
+:root {
+  color-scheme: dark;
+
+  --bg: #101010;
+  --fg: #b0b0b0;
+  --muted: #474747;
+  --faint: #474747;
+  --line: #272727;
+
+  /* yellow/gold accent */
+  --accent: #d9ba73;
+
+  --fallback-bg: #101010;
+  --fallback-fg: #b0b0b0;
+  --fallback-muted: #474747;
+  --fallback-line: #272727;
+  --fallback-accent: #d9ba73;
+}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      height: 100%;
+      background: var(--bg, var(--fallback-bg));
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: var(--bg, var(--fallback-bg));
+      color: var(--fg, var(--fallback-fg));
+      font: 15px/1.45 Iosevka, monospace;
+      letter-spacing: 0.01em;
+    }
+
+    main {
+      width: min(640px, calc(100vw - 48px));
+      display: grid;
+      gap: 28px;
+    }
+
+    header {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      padding-bottom: 12px;
+    }
+
+    .label {
+      color: var(--muted, var(--fallback-muted));
+    }
+
+    #clock {
+      font-size: 28px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--line, var(--fallback-line));
+      padding-bottom: 10px;
+    }
+
+    form span {
+      color: var(--muted, var(--fallback-muted));
+      user-select: none;
+    }
+
+    input {
+      width: 100%;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--fg, var(--fallback-fg));
+      font: inherit;
+      caret-color: var(--accent, var(--fallback-accent));
+    }
+
+    input::placeholder {
+      color: var(--muted, var(--fallback-muted));
+      opacity: 1;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line, var(--fallback-line));
+      border: 1px solid var(--line, var(--fallback-line));
+    }
+
+    a {
+      display: block;
+      padding: 14px 16px;
+      background: var(--bg, var(--fallback-bg));
+      color: var(--fg, var(--fallback-fg));
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent, var(--fallback-accent));
+      outline: 1px solid var(--accent, var(--fallback-accent));
+      outline-offset: -1px;
+    }
+
+    kbd {
+      color: var(--muted, var(--fallback-muted));
+      font: inherit;
+      float: right;
+    }
+
+    footer {
+      color: var(--muted, var(--fallback-muted));
+      font-size: 13px;
+      border-top: 1px solid var(--line, var(--fallback-line));
+      padding-top: 12px;
+			text-align: center;
+		}
