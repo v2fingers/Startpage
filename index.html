@@ -60,6 +60,10 @@
     tick();
     setInterval(tick, 1000);
 
+		window.addEventListener("load", () => {
+			document.getElementById("query").focus();
+		});
+
     form.addEventListener("submit", event => {
       event.preventDefault();
 
